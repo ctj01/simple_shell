@@ -1,5 +1,5 @@
-[![Bash Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
-[![GitHub contributors](https://img.shields.io/github/contributors/nathsotomayor/simple_shell?style=plastic)](https://github.com/ctj01/simple_shell/graphs/contributors)
+[![Bash Shell](https://imgur.com/a/xhdph2r)](https://github.com/ellerbrock/open-source-badges/)
+[![GitHub contributors](https://github.com/ctj01/simple_shell/graphs/contributors)](https://github.com/ctj01/simple_shell/graphs/contributors)
 
 <img src="https://miro.medium.com/max/2700/1*Nj9f2Ej5PaEp3N3k57lutg.png"
      alt="shell_holberton_cali"
