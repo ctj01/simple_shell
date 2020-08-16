@@ -1,10 +1,9 @@
-[![Bash Shell](https://imgur.com/gallery/mM2cYtX)](https://github.com/ellerbrock/open-source-badges/)
-[![GitHub contributors](https://github.com/ctj01/simple_shell/graphs/contributors)
-
-<img src="https://imgur.com/VChdlIb"
-     alt="shell_holberton_cali"
-     style="float: left; margin-right: 10px;">
-
+<p align="center">
+  <img src="https://www.holbertonschool.com/holberton-logo.png" width="360"/>
+ <h1 align="center">System engineering & DevOps - Bash</h1>
+ <br>
+ <p align="center">
+ 
 # Simple shell
 In this project we'll create a simple UNIX command interpreter in C programming language.
 
