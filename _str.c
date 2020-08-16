@@ -100,7 +100,7 @@ char *_strtok(char str[], const char *delim)
 				break;
 			}
 		}
-		if (del == 0 && *sp) 
+		if (del == 0 && *sp)
 			del = 1;
 	}
 	if (del == 0)

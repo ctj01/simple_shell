@@ -9,8 +9,9 @@
 char *read_line(int *_EOF)
 {
 	char *input = NULL;
-	input = malloc(_BUFSIZE);
 	size_t bufsize = 0;
+
+	input = malloc(_BUFSIZE);
 	if (!input)
 	{
 		free(input);

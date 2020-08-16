@@ -89,7 +89,7 @@ nodelist_ *add_line_node_end(nodelist_ **head, char *line)
 }
 
 /**
- * free_line_list - frees a nodelist_
+ * free_nodelist_ - frees a nodelist_
  * @head: head of the linked list.
  * Return: no return.
  */
