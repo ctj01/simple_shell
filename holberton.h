@@ -100,12 +100,8 @@ sep_list *add_sep_node_end(sep_list **head, char sep);
 void free_sep_list(sep_list **head);
 nodelist_ *add_line_node_end(nodelist_ **head, char *line);
 void free_nodelist_(nodelist_ **head);
-
-
 _var *add_rvar_node(_var **head, int lvar, char *var, int lval);
 void free_rvar_list(_var **head);
-
-
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
