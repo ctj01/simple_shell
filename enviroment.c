@@ -76,5 +76,5 @@ int _env(_unix *cmd)
 	}
 	cmd->status = 0;
 
-	return (1);
+	return (0);
 }

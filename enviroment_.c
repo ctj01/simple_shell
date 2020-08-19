@@ -70,12 +70,12 @@ int _setenv(_unix *cmd)
 	if (cmd->args[1] == NULL || cmd->args[2] == NULL)
 	{
 		get_error(cmd, -1);
-		return (1);
+		return (-1);
 	}
 
 	set_env(cmd->args[1], cmd->args[2], cmd);
 
-	return (1);
+	return (0);
 }
 
 /**
@@ -94,7 +94,7 @@ int _unsetenv(_unix *cmd)
 	if (cmd->args[1] == NULL)
 	{
 		get_error(cmd, -1);
-		return (1);
+		return (-1);
 	}
 	k = -1;
 	for (i = 0; cmd->_environ[i]; i++)
@@ -110,7 +110,7 @@ int _unsetenv(_unix *cmd)
 	if (k == -1)
 	{
 		get_error(cmd, -1);
-		return (1);
+		return (-1);
 	}
 	realloc_environ = malloc(sizeof(char *) * (i));
 	for (i = j = 0; cmd->_environ[i]; i++)
@@ -125,5 +125,5 @@ int _unsetenv(_unix *cmd)
 	free(cmd->_environ[k]);
 	free(cmd->_environ);
 	cmd->_environ = realloc_environ;
-	return (1);
+	return (0);
 }
