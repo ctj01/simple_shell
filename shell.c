@@ -18,5 +18,5 @@ int main(int ac, char **argv)
 	free_(&cmd);
 	if (cmd.status < 0)
 		return (EXIT_FAILURE);
-	return (cmd.status);
+	return (EXIT_SUCCESS);
 }
