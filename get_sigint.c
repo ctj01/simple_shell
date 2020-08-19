@@ -7,5 +7,5 @@
 void get_sigint(int sig)
 {
 	(void)sig;
-	write(STDIN_FILENO, "#RTFM'-' ", 9);
+	write(STDOUT_FILENO, "\n^-^ ", 5);
 }
