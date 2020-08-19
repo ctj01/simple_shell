@@ -12,14 +12,6 @@
 #include <limits.h>
 #define _BUFSIZE 128
 #define _DELIMITERS " \t\r\n\a"
-#if !(defined _POSIX_C_SOURCE)
-typedef long int ssize_t;
-#endif
-#if !(defined _POSIX_C_SOURCE) || _POSIX_C_SOURCE < 200809L
-#if !(defined SSIZE_MAX)
-#define SSIZE_MAX (SIZE_MAX >> 1)
-#endif
-#endif
 extern char **environ;
 
 

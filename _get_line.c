@@ -10,7 +10,7 @@
  */
 void aux_getline(char **lineptr, size_t *n, char *buffer, size_t j)
 {
-        if (*lineptr == NULL)
+	if (*lineptr == NULL)
 	{
 		if  (j > _BUFSIZE)
 			*n = j;
