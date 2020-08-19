@@ -11,14 +11,6 @@ char *read_line(int *_EOF)
 	char *input = NULL;
 	size_t bufsize = 0;
 
-	input = malloc(_BUFSIZE);
-	if (!input)
-	{
-		free(input);
-		return (NULL);
-	}
-
-	*_EOF = _getline(&input, &bufsize, stdin);
-
+	*_EOF = getline(&input, &bufsize, stdin);
 	return (input);
 }
