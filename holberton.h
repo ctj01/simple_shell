@@ -95,7 +95,7 @@ typedef struct build_
 	int (*f)(_unix *cmd);
 } _build_;
 
-ssize_t aux_getline(char **lineptr, size_t *n, FILE *stream);
+void aux_getline(char **lineptr, size_t *n, char *buffer, size_t j);
 sep_list *add_sep_node_end(sep_list **head, char sep);
 void free_sep_list(sep_list **head);
 nodelist_ *add_line_node_end(nodelist_ **head, char *line);

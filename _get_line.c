@@ -7,47 +7,30 @@
  * @stream: data stream
  * Return: return the number of characters read
  */
-ssize_t aux_getline(char **lineptr, size_t *n, FILE *stream)
+void aux_getline(char **lineptr, size_t *n, char *buffer, size_t j)
 {
-	const size_t _REALLOCMEMORY = 1024;
-	int c;
-	size_t n_read = 0;
-
-	while (EOF != (c = getc(stream)))
+        if (*lineptr == NULL)
 	{
-		n_read++;
-		if (n_read >= *n)
-		{
-			size_t n_realloc = *n + _REALLOCMEMORY;
-			char *tmp = realloc(*lineptr, n_realloc + 1);
+		if  (j > _BUFSIZE)
+			*n = j;
 
-			if (tmp != NULL)
-			{
-				*lineptr = tmp;
-				*n = n_realloc;
-			}
-			else
-			{
-
-				return (-1);
-			}
-
-			if (*n > SSIZE_MAX)
-				return (-1);
-
-		}
-
-		(*lineptr)[n_read - 1] = (char) c;
-
-		if (c == '\n')
-			break;
+		else
+			*n = _BUFSIZE;
+		*lineptr = buffer;
 	}
-
-	if (c == EOF)
-		return (-1);
-	(*lineptr)[n_read] = '\0';
-
-	return ((ssize_t) n_read);
+	else if (*n < j)
+	{
+		if (j > _BUFSIZE)
+			*n = j;
+		else
+			*n = _BUFSIZE;
+		*lineptr = buffer;
+	}
+	else
+	{
+		_strcpy(*lineptr, buffer);
+		free(buffer);
+	}
 }
 /**
  * _getline - reads an entire line from stream.
@@ -59,27 +42,44 @@ ssize_t aux_getline(char **lineptr, size_t *n, FILE *stream)
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	const size_t INITIAL_MEMORY = 1024;
 
+	int i;
+	static ssize_t input;
+	ssize_t retval;
+	char *buffer;
+	char t = 'z';
 
-	if ((!*lineptr) || (!n) || (!stream))
-	{
-		errno = EINVAL;
+	if (input == 0)
+		fflush(stream);
+	else
 		return (-1);
-	}
+	input = 0;
 
-	if (*lineptr == NULL)
+	buffer = malloc(sizeof(char) * _BUFSIZE);
+	if (buffer == 0)
+		return (-1);
+	while (t != '\n')
 	{
-		*lineptr = malloc(INITIAL_MEMORY);
-		if (!*lineptr)
+		i = read(STDIN_FILENO, &t, 1);
+		if (i == -1 || (i == 0 && input == 0))
 		{
+			free(buffer);
 			return (-1);
 		}
-		else
+		if (i == 0 && input != 0)
 		{
-			*n = INITIAL_MEMORY;
+			input++;
+			break;
 		}
+		if (input >= _BUFSIZE)
+			buffer = _realloc(buffer, input, input + 1);
+		buffer[input] = t;
+		input++;
 	}
-
-	return (aux_getline(*(&lineptr), n, stream));
+	buffer[input] = '\0';
+	aux_getline(lineptr, n, buffer, input);
+	retval = input;
+	if (i != 0)
+		input = 0;
+	return (retval);
 }
