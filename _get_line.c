@@ -3,8 +3,9 @@
  * aux_getline -  storing the address of the buf.
  *
  * @lineptr: storing data from buffer
- * @n : memory allocated
- * @stream: data stream
+ * @buffer: memory allocated
+ * @n: data stream
+ * @j: data
  * Return: return the number of characters read
  */
 void aux_getline(char **lineptr, size_t *n, char *buffer, size_t j)
