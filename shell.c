@@ -17,6 +17,6 @@ int main(int ac, char **argv)
 	shell_(&cmd);
 	free_(&cmd);
 	if (cmd.status < 0)
-		exit(EXIT_FAILURE);
+		return (255);
 	return (cmd.status);
 }
