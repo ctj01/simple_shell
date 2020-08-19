@@ -18,7 +18,7 @@ char *read_line(int *_EOF)
 		return (NULL);
 	}
 
-	*_EOF = _getline(&input, &bufsize, stdin);
+	*_EOF = getline(&input, &bufsize, stdin);
 
 	return (input);
 }
