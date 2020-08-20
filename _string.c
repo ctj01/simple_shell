@@ -1,106 +1,66 @@
 #include "holberton.h"
 
 /**
- * _strcat - concatenate two strings
- * @dest: char pointer the dest of the copied str
- * @src: const char pointer the source of str
- * Return: the dest
+ * splitString - splits string into an array of strings
+ * separated by spaces
+ * @ssh: input ssh
+ * Return: true if able to split, false if not
  */
-char *_strcat(char *dest, const char *src)
+_Bool splitString(_unix *ssh)
 {
-	int i;
-	int j;
+	register unsigned int i = 0;
+	char *tok, *cpy;
 
-	for (i = 0; dest[i] != '\0'; i++)
-		;
-
-	for (j = 0; src[j] != '\0'; j++)
+	if (countWords(ssh->buffer) == 0)
 	{
-		dest[i] = src[j];
+		ssh->args = NULL;
+		free(ssh->buffer);
+		return (false);
+	}
+	ssh->args = malloc((countWords(ssh->buffer) + 1) * sizeof(char *));
+	cpy = _strdup(ssh->buffer);
+	tok = _strtok(cpy, " ");
+	while (tok)
+	{
+		ssh->args[i] = _strdup(tok);
+		tok = _strtok(NULL, " ");
 		i++;
 	}
-
-	dest[i] = '\0';
-	return (dest);
+	ssh->args[i] = NULL;
+	free(cpy);
+	return (true);
 }
+
 /**
- * *_strcpy - Copies the string pointed to by src.
- * @dest: Type char pointer the dest of the copied str
- * @src: Type char pointer the source of str
- * Return: the dest.
+ * countWords - count number of words in a string
+ * @str: input string
+ * Return: number of words
  */
-char *_strcpy(char *dest, char *src)
+unsigned int countWords(char *str)
 {
+	register int words = 0;
+	_Bool wordOn = false;
 
-	size_t a;
-
-	for (a = 0; src[a] != '\0'; a++)
+	while (*str)
 	{
-		dest[a] = src[a];
-	}
-	dest[a] = '\0';
-
-	return (dest);
-}
-/**
- * _strcmp - Function that compares two strings.
- * @s1: type str compared
- * @s2: type str compared
- * Return: Always 0.
- */
-int _strcmp(char *s1, char *s2)
-{
-	int i;
-
-	for (i = 0; s1[i] == s2[i] && s1[i]; i++)
-		;
-
-	if (s1[i] > s2[i])
-		return (1);
-	if (s1[i] < s2[i])
-		return (-1);
-	return (0);
-}
-/**
- * _strchr - locates a character in a string,
- * @s: string.
- * @c: character.
- * Return: the pointer to the first occurrence of the character c.
- */
-char *_strchr(char *s, char c)
-{
-	unsigned int i = 0;
-
-	for (; *(s + i) != '\0'; i++)
-		if (*(s + i) == c)
-			return (s + i);
-	if (*(s + i) == c)
-		return (s + i);
-	return ('\0');
-}
-/**
- * _strspn - gets the length of a prefix substring.
- * @s: initial segment.
- * @accept: accepted bytes.
- * Return: the number of accepted bytes.
- */
-int _strspn(char *s, char *accept)
-{
-	int i, j, bool;
-
-	for (i = 0; *(s + i) != '\0'; i++)
-	{
-		bool = 1;
-		for (j = 0; *(accept + j) != '\0'; j++)
+		if (isSpace(*str) && wordOn)
+			wordOn = false;
+		else if (!isSpace(*str) && !wordOn)
 		{
-			if (*(s + i) == *(accept + j))
-			{
-				bool = 0;
-				break;
-			}
+			wordOn = true;
+			words++;
 		}
-		if (bool == 1)
-			break;
+		str++;
 	}
-	return (i);
+	return (words);
+}
+
+/**
+ * isSpace - determines if char is a space
+ * @c: input char
+ * Return: true or false
+ */
+_Bool isSpace(char c)
+{
+	return (c == ' ');
 }
