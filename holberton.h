@@ -103,14 +103,14 @@ int hExit(_unix *ssh);
 int hEnv(_unix *ssh);
 int hHistory(_unix *ssh);
 
-/* help2 */
+/* _help*/
 int _Halias(_unix *ssh);
 int hCd(_unix *biuld);
 int hSetenv(_unix *ssh);
 int hUnsetenv(_unix *ssh);
 int _Help(_unix *ssh);
 
-/* built_in_helpers*/
+/* _built_ins*/
 int Arguments(char **args);
 int _atoi(char *string);
 
@@ -124,19 +124,19 @@ void convertLLtoArr(_unix *ssh);
 /* _getenv */
 char *_getenv(char *input, char **environ);
 
-/* error_handler */
+/* get_Error */
 void _getError(_unix *ssh);
 unsigned int countDigits(int num);
 char *itoa(unsigned int num);
 char *OutError();
 
-/* shell_helpers */
+/* shell_*/
 void insertNullByte(char *str, unsigned int index);
 void displayPrompt(void);
 void displayNewLine(void);
 void sigintHandler(int sigint);
 
-/* check_path */
+/* path_checker */
 _Bool pathChecker(_unix *);
 _Bool _eCases(_unix *ssh);
 
@@ -145,26 +145,26 @@ _Bool splitString(_unix *ssh);
 unsigned int countWords(char *s);
 _Bool isSpace(char c);
 
-/* string_helpers1 */
+/* string_*/
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
 
-/* string_helpers2 */
+/* string_ */
 char *_strtok(char *str, char *delim);
 int _strcspn(char *string, char *chars);
 char *_strchr(char *s, char c);
 
-/* llfuncs1 */
+/* node_list */
 node_l *addNode(node_l **head, char *str);
 node_l *addNodeEnd(node_l **head, char *str);
 size_t printList(const node_l *h);
 int searchNode(node_l *head, char *str);
 size_t list_len(node_l *h);
 
-/* llfuncs2 */
+/* node_func */
 int deleteNodeAtIndex(node_l **head, unsigned int index);
 node_l *generateLinkedList(char **array);
 node_l *addNodeAtIndex(node_l **head, int index, char *str);
