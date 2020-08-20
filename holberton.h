@@ -15,11 +15,11 @@
 
 /* ERRORS */
 #define BUFSIZE 256
-#define ENOSTRING 1106
-#define EILLEGAL 227
-#define EWSIZE 410
-#define ENOBUILTIN 415
-#define EBADCD 726
+#define ENO 1106
+#define RALLOC 227
+#define ESIZE 410
+#define EBUILT 415
+#define HCD 726
 
 extern char **environ;
 

@@ -11,25 +11,25 @@ int searchNode(node_l *head, char *str)
 {
 	register int len = 0, index = 0, i;
 	node_l *current;
-	char *tmp, *ptr;
+	char *temporal, *ptr;
 
 	current = head;
 	while (current)
 	{
 		ptr = _strchr(current->string, '=');
 		len = ptr - current->string;
-		tmp = malloc(sizeof(char) * len + 1);
+		temporal = malloc(sizeof(char) * len + 1);
 		for (i = 0; i < len; i++)
-			tmp[i] = current->string[i];
-		tmp[i] = '\0';
-		if (_strcmp(str, tmp) == 0)
+			temporal[i] = current->string[i];
+		temporal[i] = '\0';
+		if (_strcmp(str, temporal) == 0)
 		{
-			free(tmp);
+			free(temporal);
 			return (index);
 		}
 		index++;
 		current = current->next;
-		free(tmp);
+		free(temporal);
 	}
 	return (-1);
 }
