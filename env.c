@@ -24,7 +24,7 @@ int setenvFunc(_unix *ssh)
 
 	if (Arguments(ssh->args) != 3)
 	{
-		errno = EWSIZE;
+		errno = ESIZE;
 		_getError(ssh);
 		return (1);
 	}
@@ -72,7 +72,7 @@ int unsetenvFunc(_unix *ssh)
 	}
 	if (varfind == false)
 	{
-		errno = ENOSTRING;
+		errno = ENO;
 		_getError(ssh);
 	}
 	return (1);

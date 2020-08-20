@@ -40,7 +40,7 @@ int helpFunc(_unix *ssh)
 	}
 	if (foundCommand == false)
 	{
-		errno = ENOBUILTIN;
+		errno = EBUILT;
 		_getError(ssh);
 	}
 	return (1);

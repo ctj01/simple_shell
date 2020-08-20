@@ -19,7 +19,7 @@ void _getError(_unix *ssh)
 	_strcat(error, OutError());
 	if (ssh->args[1])
 	{
-		if (errno != EBADCD)
+		if (errno != HCD)
 			_strcat(error, ": ");
 		_strcat(error, ssh->args[1]);
 	}
@@ -41,22 +41,22 @@ char *OutError(void)
 
 	switch (errno)
 	{
-		case EBADCD:
+		case HCD:
 			str = ": can't cd to ";
 			break;
 		case ENOENT:
 			str = ": not found";
 			break;
-		case ENOSTRING:
+		case ENO:
 			str = ": bad variable name";
 			break;
-		case EILLEGAL:
+		case RALLOC:
 			str = ": Illegal number";
 			break;
-		case EWSIZE:
+		case ESIZE:
 			str = ": invalid number of arguments";
 			break;
-		case ENOBUILTIN:
+		case EBUILT:
 			str = ": type help for a list of built-ins";
 			break;
 		case EACCES:

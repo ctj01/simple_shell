@@ -55,7 +55,7 @@ int _exitsv(_unix *ssh)
 		exitstatus = _atoi(ssh->args[1]);
 		if (exitstatus == -1)
 		{
-			errno = EILLEGAL;
+			errno = RALLOC;
 			ssh->errorStatus = 2;
 			_getError(ssh);
 			return (0);

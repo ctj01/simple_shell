@@ -88,7 +88,7 @@ _Bool _cdUser(_unix *ssh)
 	changeStatus = chdir(ssh->args[1]);
 	if (changeStatus == -1)
 	{
-		errno = EBADCD;
+		errno = HCD;
 		_getError(ssh);
 		return (false);
 	}
