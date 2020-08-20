@@ -117,6 +117,8 @@ int _atoi(char *string);
 /* shell */
 void shell(_unix *ssh);
 void _getline(_unix *ssh);
+void read_line(char **lineptr, size_t *n, char *buffer, size_t j);
+ssize_t _get_line(char **lineptr, size_t *n, FILE *stream);
 void forkAndExecute(_unix *ssh);
 void stripComments(char *str);
 void convertLLtoArr(_unix *ssh);
